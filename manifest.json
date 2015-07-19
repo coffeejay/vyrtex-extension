@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+ 
+  "name": "Vyrtex-extenstion",
+  "description": "Quick add to Vyrtex from Chrome",
+  "version": "1.0",
+ 
+  "browser_action": {
+   "default_icon": "icon.png",
+   "default_popup": "popup.html"
+  },
+  "permissions": [
+   "activeTab", 
+   "tabs", "https://docs.google.com/feeds/*",
+   "https://www.google.com/accounts/OAuthGetRequestToken",
+   "https://www.google.com/accounts/OAuthAuthorizeToken",
+   "https://www.google.com/accounts/OAuthGetAccessToken"
+   ]
+}
