@@ -10,10 +10,9 @@
    "default_popup": "popup.html"
   },
   "permissions": [
+   "identity",
    "activeTab", 
-   "tabs", "https://docs.google.com/feeds/*",
-   "https://www.google.com/accounts/OAuthGetRequestToken",
-   "https://www.google.com/accounts/OAuthAuthorizeToken",
-   "https://www.google.com/accounts/OAuthGetAccessToken"
+   "tabs", 
+   "http://localhost:3000/*"
    ]
 }
