@@ -1,33 +1,42 @@
 window.onload = function() {
+  var CLIENT_ID = '1e860423b3d54b09101c9fd7c1a225fa14b32dd2a0b7da56f10914c9e5c044f1'
+  var CLIENT_SECRET = '20c6d35ced31cca65ae3cbbf5ab6aa3fe786297bb774d60b9188495617266874'
+  var REDIRECT_URI = 'https://ljcjhaejllpbeiamjnbldcngmjjoihln.chromiumapp.org/vyrtex-chrome-extension'
+
+  function htmlEncode(value){
+    return $('<div/>').text(value).html();
+  }
+
+  function exchangeCodeForToken(code) {
+    data = {
+      client_id: CLIENT_ID,
+      grant_type: 'authorization_code',
+      redirect_uri: REDIRECT_URI,
+      code: code
+    }
+
+    $.ajax({
+      type: 'POST',
+      beforeSend: function(request) {
+        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        request.setRequestHeader('Accept', 'application/json');
+        request.setRequestHeader('Authorization', 'Basic ' + btoa(CLIENT_ID + ':' + CLIENT_SECRET));
+      },
+      url: 'http://localhost:3000/oauth/token',
+      data: data
+    }).done(function(response) {
+      console.log(response);
+    }).fail(function(response) {
+      console.log(response);
+    });
+  }
+
   $("#login").click(function(event) {
     chrome.identity.launchWebAuthFlow(
-    {'url': 'http://localhost:3000/oauth/authorize?client_id=7b529aed5e89c14bd45c4cb949f220e5bc4cc440003dd7604d3fc6ed43f29844&redirect_uri=https%3A%2F%2Fhnjjholodahaklljjenjpfbkkghppdpk.chromiumapp.org%2Fvyrtex-chrome-extension&response_type=code', 'interactive': true},
+    {'url': 'http://localhost:3000/oauth/authorize?client_id=' + CLIENT_ID + '&redirect_uri=' + htmlEncode(REDIRECT_URI) + '&response_type=code', 'interactive': true},
     function(redirect_url) { 
-       console.log(redirect_url);
        var code = redirect_url.substring(redirect_url.indexOf("=") + 1, redirect_url.length );
        exchangeCodeForToken(code);
     });
   });
-
-  function exchangeCodeForToken(code) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST',
-             'http://localhost:3000/oauth/token?' +
-             'client_id=' + "7b529aed5e89c14bd45c4cb949f220e5bc4cc440003dd7604d3fc6ed43f29844" +
-             '&grant_type=' + "authorization_code" +
-             '&redirect_uri=' + "https://hnjjholodahaklljjenjpfbkkghppdpk.chromiumapp.org/vyrtex-chrome-extension" +
-             '&code=' + code);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.setRequestHeader('Accept', 'application/json');
-    xhr.setRequestHeader('Authorization', 'Basic ' + btoa('7b529aed5e89c14bd45c4cb949f220e5bc4cc440003dd7604d3fc6ed43f29844' + ':' + '48ec91d8b544bc13f6ddc2528a64105da385cbde6b4345972026eb3eaf8abd0a'));
-    xhr.onload = function () {
-      if (this.status === 200) {
-        var response = JSON.parse('"'+this.responseText+'"');
-        response = response.substring(0,response.indexOf('&'));
-        access_token = response;
-        console.log(access_token);
-      }
-    };
-    xhr.send();
-  }
 }
