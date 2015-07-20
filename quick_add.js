@@ -4,6 +4,13 @@ window.onload = function() {
   var CLIENT_ID = '93b237a292e6f5ca67c7ed96c141702a06035bba0f906051d7a07ae59a88e641';
   var CLIENT_SECRET = '196be0bf8f968f5119156f92655dbd73da8451ec15a37b0f006b01d3fa4e28db';
 
+  $(document).ready(function(){
+   $('body').on('click', 'a', function(){
+     chrome.tabs.create({url: $(this).attr('href')});
+     return false;
+   });
+  });
+
   chrome.storage.sync.get(function(object) {
     var access_token = object.access_token;
     
@@ -11,7 +18,7 @@ window.onload = function() {
 
     $.ajax({
       type: "GET",
-      url: 'http://localhost:3000/api/collections',
+      url: BASE_URI + 'api/collections',
       beforeSend: function(request) {
         request.setRequestHeader('Authorization', 'Bearer ' + access_token)
       }
@@ -28,7 +35,10 @@ window.onload = function() {
         select.append($('<option />').val(id).text(name));
       })
     }).fail(function(response) {
-      console.log(response);
+      if (response.status === 401) {
+        chrome.storage.sync.clear();
+        window.location.href = "popup.html";
+      }
     })
 
     chrome.tabs.getSelected(null,function(tab) {
@@ -53,6 +63,8 @@ window.onload = function() {
             $('#metadata_img').attr('src', response.metadata.image);
             $('#metadata_description').html(response.metadata.description);
             $('#metadata_title').html(response.metadata.title);
+            $('#article-description').html(response.metadata.description);
+            $('#article-title').val(response.metadata.title);
             $('#pre_filled_metadata').show();
           }
           else{
@@ -64,7 +76,37 @@ window.onload = function() {
       });
     });
 
+    $("#add-article").click(function(event) {
+
+      var data = {
+        'article[url]': $('#url_input').val(),
+        'article[title]': $('#article-title').val(),
+        'article[description]': $('#article-description').val(),
+        'article[image]': $('#metadata_img').attr('src'),
+        'article[collection_id]': $('#collections').val()
+      }
+
+      console.log(data);
+
+      $.ajax({
+        type: "POST",
+        url: BASE_URI + 'api/articles',
+        beforeSend: function(request) {
+          request.setRequestHeader('Authorization', 'Bearer ' + access_token)
+        },
+        data: data
+      }).done(function(response) {
+        console.log(response);
+        $('#main_container').hide();
+        $('#success_container #link_to_collection').attr('href', BASE_URI + 'collections/' + response.article.collection_id)
+        $('#success_container').show();
+
+      }).fail(function(response) {
+        console.log(response);
+      })
+    });
+
   });
 
-
+  
 }

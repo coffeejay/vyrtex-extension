@@ -1,6 +1,6 @@
 window.onload = function() {
-  var CLIENT_ID = '1e860423b3d54b09101c9fd7c1a225fa14b32dd2a0b7da56f10914c9e5c044f1';
-  var CLIENT_SECRET = '20c6d35ced31cca65ae3cbbf5ab6aa3fe786297bb774d60b9188495617266874';
+  var CLIENT_ID = '1f795e7f4fb8bf07a74e2abb9844b73978e02a26aba31e78a8b197289a99c5be';
+  var CLIENT_SECRET = '797761fc6d77f921e6e2db8103d6ebc09ade9f90d02450881a820de141ecfca6';
   var REDIRECT_URI = 'https://ljcjhaejllpbeiamjnbldcngmjjoihln.chromiumapp.org/vyrtex-chrome-extension';
   var BASE_URI = 'http://localhost:3000/'
 
