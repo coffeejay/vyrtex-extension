@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
  
-  "name": "Vyrtex-extenstion",
+  "name": "Vyrtex Quick Add",
   "description": "Quick add to Vyrtex from Chrome",
-  "version": "1.0",
+  "version": "1.0.1",
   "minimum_chrome_version": "23",
  
   "browser_action": {
@@ -16,6 +16,12 @@
    "tabs",
    "storage",
    "http://localhost:3000/*", 
-   "http://localhost:3000/oauth/access_token/"
+   "http://localhost:3000/oauth/access_token/",
+   "http://vyrtex.com/*", 
+   "http://vyrtex.com/oauth/access_token/",
+   "http://beta.vyrtex.com/*", 
+   "http://beta.vyrtex.com/oauth/access_token/",
+   "http://vyrtex-staging.herokuapp.com/*", 
+   "http://vyrtex-staging.herokuapp.com/oauth/access_token/"
    ]
 }
