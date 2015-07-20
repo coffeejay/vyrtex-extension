@@ -30,6 +30,17 @@ window.onload = function() {
   chrome.tabs.getSelected(null,function(tab) {
     var tablink = tab.url;
     $('#url_input').val(tablink);
+
+    $('#main_container').css('height', '400px');
+
+    //make call to get metadata
+
+    //if metadata exists
+    $('#pre_filled_metadata').show();
+
+    //if metadata doesnt exist 
+    $('#unfilled_metadata').show();
+
   });
-  
+
 }
