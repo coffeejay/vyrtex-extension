@@ -1,8 +1,8 @@
 window.onload = function() {
-  var CLIENT_ID = '1f795e7f4fb8bf07a74e2abb9844b73978e02a26aba31e78a8b197289a99c5be';
-  var CLIENT_SECRET = '797761fc6d77f921e6e2db8103d6ebc09ade9f90d02450881a820de141ecfca6';
-  var REDIRECT_URI = 'https://ljcjhaejllpbeiamjnbldcngmjjoihln.chromiumapp.org/vyrtex-chrome-extension';
-  var BASE_URI = 'http://localhost:3000/'
+  var CLIENT_ID = '6ebbc8bd124a2243e07fb0603b1d88858c4bf8040f4ef133738281220bb7ecb1';
+  var CLIENT_SECRET = '6a12f115b888968aefc69ea7a4ad165d4fd9f0ddd25064ae51deb2ba31ccbf9e';
+  var REDIRECT_URI = 'https://mpngmaeikidoddalmljkgnoeeghjpajp.chromiumapp.org/vyrtex-chrome-extension';
+  var BASE_URI = 'http://localhost:3000/';
 
   $(document).ready(function(){
    $('body').on('click', 'a', function(){
@@ -45,7 +45,7 @@ window.onload = function() {
       var tablink = tab.url;
       $('#url_input').val(tablink);
 
-      //make call to get metadata
+      //Get metadata
 
       $.ajax({
         type: 'GET',
@@ -64,6 +64,7 @@ window.onload = function() {
             $('#metadata_title').html(response.metadata.title);
             $('#article-description').html(response.metadata.description);
             $('#article-title').val(response.metadata.title);
+            $('#article-provider').val(response.metadata.site_name);
             $('#pre_filled_metadata').show();
           }
           else{

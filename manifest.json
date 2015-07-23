@@ -3,12 +3,14 @@
  
   "name": "Vyrtex Quick Add",
   "description": "Quick add to Vyrtex from Chrome",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "minimum_chrome_version": "23",
- 
   "browser_action": {
    "default_icon": "icon.png",
    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts":["jquery-2.1.4.min.js", "background.js"]
   },
   "permissions": [
    "identity",

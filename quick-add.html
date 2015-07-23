@@ -10,33 +10,37 @@
   </head>
   <body>
 
-    <div class="container" style="width:500px; padding-top:20px" id="main_container" align="center">
-      <h4> Add a new Article </h4>
-      <br/>
-      <input type="text" id="url_input" placeholder="Paste URL to add article" class="form-control" style="margin-bottom:10px">
-      <select id="collections" class="form-control">
-      </select>
-      <br/>
-      <button class="btn btn-default" id="add-article">+ Add Article</button>
+    <div class="container" style="width:500px; padding: 0; padding-top:15px" id="main_container" align="center">
       
-      <div class="row" style="margin-top:10px;display:none" id="pre_filled_metadata">
-        <div class="col-xs-2">
-          <img src="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=ea71a5211a91&a" width="75px" height="75px" id="metadata_img">
+      <h4 style="text-align: left; margin: 0; margin-bottom: 15px; padding-left: 15px; font-weight: 400;"> Add a new article </h4>
+      <hr style="margin: 0;"/>
+      <br/>
+      <div style="padding-left: 15px; padding-right: 15px;">
+        <input type="text" id="url_input" placeholder="Paste URL to add article" class="form-control" style="margin-bottom:10px">
+        <select id="collections" class="form-control">
+        </select>
+        <br/>
+        <button class="btn btn-default" id="add-article">+ Add Article</button>
+        
+        <div class="row" style="margin-top:10px;display:none" id="pre_filled_metadata">
+          <div class="col-xs-2">
+            <img src="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=ea71a5211a91&a" width="75px" height="75px" id="metadata_img">
+          </div>
+          <div class="col-xs-10">
+          <b><p class="small" id="metadata_title" style="font-size: 20px;color: black;font-family: Lora, serif;font-weight: 700;"></p></b>
+            <p class="small" id="metadata_description" style="font-size: 13px;">This is where the description goes. This is where the description goes. This is where the description goes. </p>
+          </div>
         </div>
-        <div class="col-xs-10">
-        <b><p class="small" id="metadata_title" style="font-size: 20px;color: black;font-family: Lora, serif;font-weight: 700;"></p></b>
-          <p class="small" id="metadata_description" style="font-size: 13px;">This is where the description goes. This is where the description goes. This is where the description goes. </p>
-        </div>
-      </div>
 
-      <div class="row" style="margin-top:20px;display:none" id="unfilled_metadata">
-        <div class="col-sm-2">
-          <img src="http://localhost:3000/assets/default-image.png" width="75px" height="75px">
-        </div>
-        <div class="col-sm-10">
-          <input class="form-control" id="article-title" placeholder="Title" style="margin-bottom:5px;margin-top:5px">
-          <textarea placeholder="Description" id="article-description" style="width:100%;height:50px;margin-bottom:5px" class="form-control"></textarea>
-          <input class="form-control" id="article-provider" placeholder="Provider">
+        <div class="row" style="margin-top:20px;display:none" id="unfilled_metadata">
+          <div class="col-xs-2">
+            <img src="http://localhost:3000/assets/default-image.png" width="75px" height="75px">
+          </div>
+          <div class="col-xs-10">
+            <input class="form-control" id="article-title" placeholder="Title" style="margin-bottom:5px;margin-top:5px">
+            <textarea placeholder="Description" id="article-description" style="width:100%;height:50px;margin-bottom:5px" class="form-control"></textarea>
+            <input class="form-control" id="article-provider" placeholder="Provider" />
+          </div>
         </div>
       </div>
     </div>
