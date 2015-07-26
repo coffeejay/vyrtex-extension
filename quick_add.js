@@ -82,7 +82,7 @@ window.onload = function() {
         'article[title]': $('#article-title').val(),
         'article[description]': $('#article-description').val(),
         'article[image]': $('#metadata_img').attr('src'),
-        'article[provider]': $('#metadata_provider').html(),
+        'article[site_name]': $('#metadata_provider').html(),
         'article[collection_id]': $('#collections').val()
       }
 
