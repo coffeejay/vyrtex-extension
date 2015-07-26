@@ -3,7 +3,7 @@
  
   "name": "Vyrtex Quick Add",
   "description": "Quick add to Vyrtex from Chrome",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "minimum_chrome_version": "23",
   "browser_action": {
    "default_icon": "icon.png",
