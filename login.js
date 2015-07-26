@@ -1,8 +1,8 @@
 window.onload = function() {
-  var CLIENT_ID = '7bcb11568a2246a5d006b2faddbe4725d0ccb7ec31308017d6e57a75d0741ee9';
-  var CLIENT_SECRET = '22feab201bbb6b8a6fe0ed3aef4acec81afe7d8d0b83c6be3eb99c915d7be390';
-  var REDIRECT_URI = 'https://hnjjholodahaklljjenjpfbkkghppdpk.chromiumapp.org/vyrtex-chrome-extension';
-  var BASE_URI = 'http://localhost:3000/';
+  var CLIENT_ID = '6ebbc8bd124a2243e07fb0603b1d88858c4bf8040f4ef133738281220bb7ecb1';
+  var CLIENT_SECRET = '6a12f115b888968aefc69ea7a4ad165d4fd9f0ddd25064ae51deb2ba31ccbf9e';
+  var REDIRECT_URI = 'https://mpngmaeikidoddalmljkgnoeeghjpajp.chromiumapp.org/vyrtex-chrome-extension';
+  var BASE_URI = 'http://beta.vyrtex.com/';
 
   function htmlEncode(value){
     return $('<div/>').text(value).html();
