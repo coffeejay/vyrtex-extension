@@ -33,7 +33,8 @@ window.onload = function() {
       var select = $("#collections")
       $.each(collections, function(id, name) {
         select.append($('<option />').val(id).text(name));
-      })
+      });
+      select.append($('<option />').val('-1').text('Bookmarks'));
     }).fail(function(response) {
       if (response.status === 401) {
         chrome.storage.sync.clear();
